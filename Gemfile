@@ -19,6 +19,8 @@ gem 'summernote-rails'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
 gem 'webpacker', '~> 3.5'
+gem 'bootstrap-sass'
+#gem 'bootstrap'
 
 # Authentication
 gem 'clearance'

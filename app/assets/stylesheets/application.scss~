@@ -5,10 +5,7 @@ $error-background-color: #f2dede;
 @import "variables";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-//@import "bootstrap-sass/assets/stylesheets/bootstrap";
-@import "bootstrap-sprockets";
-@import "bootstrap";
-
+@import "bootstrap-sass/assets/stylesheets/bootstrap";
 @import "summernote";
 @import "apply_to_job";
 @import "login";

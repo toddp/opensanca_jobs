@@ -12,11 +12,10 @@
 //
 //= require rails-ujs
 //= require jquery
-//= require bootstrap-sprockets
+//= require bootstrap-sass/assets/javascripts/bootstrap-sprockets
 //= require summernote
 //= require turbolinks
 //= require summernote_component
 //= require app
 //= require apply_to_job
 //= require_tree .
-= require bootstrap-sass/assets/javascripts/bootstrap-sprockets
