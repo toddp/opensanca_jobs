@@ -37,6 +37,7 @@ WORKDIR /var/app
 RUN apk --update --no-cache add --virtual build-deps build-base python postgresql-dev nodejs g++; \
   bundle config build.libv8 --enable-debug && \
   LIBV8_VERSION=$LIBV8_VERSION bundle install --without development test && apk del build-deps
+
 #RUN bundle install
 RUN /opt/yarn/bin/yarn install
 RUN bundle exec rake assets:precompile RAILS_ENV=production
