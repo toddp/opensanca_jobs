@@ -330,6 +330,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  autoprefixer-rails
   awesome_print
   bootsnap
   bootstrap-sass
@@ -375,7 +376,7 @@ DEPENDENCIES
   webpacker (~> 3.5)
 
 RUBY VERSION
-   ruby 2.5.3p105
+   ruby 2.5.0p0
 
 BUNDLED WITH
    1.16.6

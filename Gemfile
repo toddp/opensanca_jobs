@@ -21,6 +21,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'webpacker', '~> 3.5'
 gem 'bootstrap-sass'
 #gem 'bootstrap'
+gem 'autoprefixer-rails'
 
 # Authentication
 gem 'clearance'
