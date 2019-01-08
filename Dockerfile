@@ -32,6 +32,6 @@ COPY . ./var/app
 WORKDIR /var/app
 RUN bundle install
 RUN /opt/yarn/bin/yarn install
-RUN bundle exec rake assets:precompile
+RUN bundle exec rake assets:precompile RAILS_ENV=production
 CMD bundle exec rails s -b 0.0.0.0
 #CMD top
