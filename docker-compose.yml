@@ -33,8 +33,9 @@ services:
       - 3000:3000
     volumes:
       - .:/var/app
-      - gemdata:/gems
-    command: rails s -b '0.0.0.0'
+      #- gemdata:/gems
+    command: bundle exec rails s -b '0.0.0.0'
+    #command: top
     environment:
       DATABASE_URL: postgres://postgres:@db/
       REDIS_URL: redis://redis:6379

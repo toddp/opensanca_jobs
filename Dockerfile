@@ -21,10 +21,15 @@ RUN apk update \
 
 ARG secret_key_base
 ENV SECRET_KEY_BASE=$secret_key_base
-ENV PATH="$PATH:/opt/yarn/bin" BUNDLE_PATH="/gems" BUNDLE_JOBS=2 RAILS_ENV=${rails_env} BUNDLE_WITHOUT=${bundle_without} SECRET_KEY_BASE="$(rake secret)"
+ENV PATH="$PATH:/opt/yarn/bin"
+#ENV BUNDLE_PATH="/gems"
+ENV BUNDLE_JOBS=2
+ENV RAILS_ENV=${rails_env}
+ENV BUNDLE_WITHOUT=${bundle_without}
+ENV SECRET_KEY_BASE="$(rake secret)"
 
-COPY . /var/app
+COPY . ./var/app
 WORKDIR /var/app
-
 RUN bundle install && yarn && bundle exec rake assets:precompile
-CMD rails s -b 0.0.0.0
+#CMD bundle exec rails s -b 0.0.0.0
+CMD top
