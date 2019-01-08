@@ -31,6 +31,8 @@ ENV SECRET_KEY_BASE="$(rake secret)"
 COPY . ./var/app
 WORKDIR /var/app
 RUN gem install yarn
-RUN bundle install && yarn && bundle exec rake assets:precompile
-#CMD bundle exec rails s -b 0.0.0.0
-CMD top
+RUN bundle install
+RUN yarn 
+RUN bundle exec rake assets:precompile
+CMD bundle exec rails s -b 0.0.0.0
+#CMD top
