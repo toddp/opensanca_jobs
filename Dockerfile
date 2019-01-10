@@ -1,23 +1,8 @@
-FROM ruby:2.5.0-alpine
-
+FROM starefossen/ruby-node
 LABEL maintainer="opensanca@opensanca.com"
 
 ARG rails_env="development"
 ARG build_without=""
-
-RUN apk update \
-  && apk add \
-    openssl \
-    tar \
-    build-base \
-    tzdata \
-    postgresql-dev \
-    postgresql-client \
-    nodejs \
-  && wget https://yarnpkg.com/latest.tar.gz \
-  && mkdir -p /opt/yarn \
-  && tar -xf latest.tar.gz -C /opt/yarn --strip 1 \
-  && mkdir -p /var/app
 
 ENV LIBV8_VERSION 3.16.14.18
 
@@ -32,14 +17,16 @@ ENV RAILS_ENV=${rails_env}
 ENV BUNDLE_WITHOUT=${bundle_without}
 ENV SECRET_KEY_BASE="$(rake secret)"
 
-COPY . ./var/app
+COPY . /var/app
 WORKDIR /var/app
-RUN apk --update --no-cache add --virtual build-deps build-base python postgresql-dev nodejs g++; \
-  bundle config build.libv8 --enable-debug && \
-  LIBV8_VERSION=$LIBV8_VERSION bundle install --without development test && apk del build-deps
+#RUN apt-get -y update --no-cache install --virtual build-deps build-base python postgresql-dev nodejs g++; \
+#  bundle config build.libv8 --enable-debug && \
+#  LIBV8_VERSION=$LIBV8_VERSION bundle install --without development test
 
-#RUN bundle install
-RUN /opt/yarn/bin/yarn install
-RUN bundle exec rake assets:precompile RAILS_ENV=production
+RUN bundle install
+RUN npm install node-sass@latest
+#RUN yarn install
+RUN bundle exec rake webpacker:compile
+RUN bundle exec rake assets:precompile --trace RAILS_ENV=production
 CMD bundle exec rails s -b 0.0.0.0
 #CMD top
