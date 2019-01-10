@@ -25,7 +25,7 @@ WORKDIR /var/app
 
 RUN bundle install
 RUN npm install node-sass@latest
-#RUN yarn install
+RUN yarn install
 RUN bundle exec rake webpacker:compile
 RUN bundle exec rake assets:precompile --trace RAILS_ENV=production
 CMD bundle exec rails s -b 0.0.0.0
